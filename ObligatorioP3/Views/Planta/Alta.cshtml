@@ -1,0 +1,86 @@
+﻿@model Dominio.Planta;
+
+
+@{
+    ViewData["Title"] = "Alta";
+
+
+
+}
+
+<h1>Alta Planta</h1>
+
+@if (Model == null)
+{
+    @ViewBag.Mensaje
+    <div>
+        <a asp-action="Alta"> Volver al alta de plantas </a>
+    </div>
+}
+else
+{
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Alta" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="NombreTipo" class="control-label"></label>
+                    <select asp-for="NombreTipo">
+                        <option value="0">Seleccione un tipo</option>
+
+                        @foreach (var item in ViewBag.Tipos)
+                        {
+                            <option value="@item.Nombre ">@item.Nombre </option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombreCientifico" class="control-label"></label>
+                    <input asp-for="NombreCientifico" class="form-control" />
+                    <span asp-validation-for="NombreCientifico" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombresVulgares" class="control-label"></label>
+                    <input asp-for="NombresVulgares" class="form-control" />
+                    <span asp-validation-for="NombresVulgares" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ambiente" class="control-label"></label>
+                    <select asp-for="Ambiente">
+                        <option value="0">Seleccione un ambiente</option>
+                        <option value="Interior">Interior</option>
+                        <option value="Exterior">Exterior</option>
+                        <option value="Mixta">Mixta</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlturaMaxima" class="control-label"></label>
+                    <input asp-for="AlturaMaxima" class="form-control" />
+                    <span asp-validation-for="AlturaMaxima" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="imagen" class="control-label"></label>
+                    <input type="file" name="imagen" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="ListarPlanta"> Listar plantas </a>
+    </div>
+}
+
+

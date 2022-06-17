@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Session;
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form method="post" action="~/Home/VerificacionLogin">
+    <label>Nombre de usuario</label><br>
+    <input type="text" name="mail" id="mail" />
+    <br /><br>
+    <label>Contraseña</label><br>
+    <input type="password" name="password" id="password" />
+    <br /><br>
+    <input type="submit" value="Iniciar sesión" onclick="return ValidarDatos();" />
+</form>
+<br>
+<p>@ViewBag.Mensaje</p>
+
+<script>
+    function ValidarDatos() {
+        let mail = document.getElementById("mail").value;
+        let password = document.getElementById("password").value;
+        let validacion = true;
+
+        if (mail === "") {
+            alert("El mail es obligatorio");
+            validacion = false;
+        }
+        if (password === "") {
+            alert("La contraseña es obligatoria");
+            validacion = false;
+        }
+        return validacion;
+    }
+</script>

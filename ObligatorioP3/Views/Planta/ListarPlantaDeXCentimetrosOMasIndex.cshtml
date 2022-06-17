@@ -1,0 +1,27 @@
+﻿@{ ViewData["title"] = "ListarPlantaDeXCentimetrosOMasIndex";
+}
+
+<h1>Filtrar Lista de Plantas por altura minima</h1>
+
+<form method="post" action="~/Planta/ListarPlantaDeXCentimetrosOMas">
+    <label>Filtrar por altura, mas altas que:</label><br>
+    <input type="number" name="miAlturaMinima" id="miAlturaMinima" />
+    <br /><br>
+    <input type="submit" value="Filtrar" onclick="return ValidarDatosAlturaMinima();" />
+</form>
+<br>
+<p>@ViewBag.Mensaje</p>
+
+<script>
+    function ValidarDatosAlturaMinima() {
+        let altura = parseFloat(document.getElementById("miAlturaMinima").value);
+        let validacion = true;
+
+        if (isNaN(altura) || altura <= 0) {
+            alert("Error en la altura ingresada");
+            validacion = false;
+        }
+
+        return validacion;
+    }
+</script>
