@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Vivero";
+}
+
+<div class="text-center">
+
+
+    <h1 class="display-4">Bienvenido al Vivero</h1>
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <p>
+            @ViewBag.Mensaje
+        </p>
+    }
+
+    <img class="img-thumbnail" src="~/imagenes/fotos/Vivero.png" />
+
+</div>

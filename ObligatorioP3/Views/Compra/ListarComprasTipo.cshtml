@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Dominio.Compra>
+
+@{ ViewData["title"] = "ListarCompras";
+}
+
+<h1>Lista de Compras</h1>
+
+<!---->
+@if (Model.Count() == 0)
+{
+    <div>
+        @ViewBag.Mensaje;
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Fecha)</th>
+                <th>Nombre cientifico planta</th>
+                <th>Cantidad Plantas</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@Html.DisplayFor(modelitem => item.Id)</th>
+                    <th>@Html.DisplayFor(modelitem => item.Fecha)</th>
+                    <th>
+                        @{
+                            foreach (var item2 in item.ItemCompras)
+                            {
+                                Html.DisplayFor(modelitem => item2.PlantaComprada.NombreCientifico);
+
+                            }
+                        }
+                        ,
+                    </th>
+                    <th>
+                        @ViewBag.Cantidad
+                    </th>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,27 @@
+﻿@{ ViewData["title"] = "ListarPlantaPorTextoIndex";
+}
+
+<h1>Filtrar Lista de Plantas por texto en los Nombres</h1>
+
+<form method="post" action="~/Planta/ListarPlantaPorTexto">
+    <label>Filtrar por altura, mas bajas que:</label><br>
+    <input type="text" name="miTexto" id="miTexto" />
+    <br /><br>
+    <input type="submit" value="Filtrar" onclick="return ValidarDatosTexto();" />
+</form>
+<br>
+<p>@ViewBag.Mensaje</p>
+
+<script>
+    function ValidarDatosTexto() {
+        let texto = document.getElementById("miTexto").value;
+        let validacion = true;
+
+        if (texto === "" || texto === null) {
+            alert("Error en el texto ingresado");
+            validacion = false;
+        }
+
+        return validacion;
+    }
+</script>

@@ -1,0 +1,31 @@
+﻿
+@{ ViewData["title"] = "ListarPlantaPorAmbienteIndex";
+}
+
+<h1>Filtrar Lista de Plantas por Ambiente</h1>
+
+<form method="post" action="~/Planta/ListarPlantaPorAmbiente">
+    <label>Filtrar por ambiente:</label><br>
+    <select name="miAmbiente" id="miAmbiente">
+        <option value="0">Seleccione un Ambiente</option>
+        <option value="Exterior">Exterior</option>
+        <option value="Interior">Interior</option>
+        <option value="Mixta">Mixta</option>
+    </select><br /><br />
+    <input type="submit" value="Filtrar" onclick="return ValidarDatosAmbiente();" />
+</form>
+<br>
+<p>@ViewBag.Mensaje</p>
+
+<script>
+    function ValidarDatosAmbiente() {
+        let miAmbiente = document.getElementById("miAmbiente").value;
+        let validacion = true;
+
+        if (miAmbiente === "0") {
+            alert("Debe seleccionar un ambiente");
+            validacion = false;
+        }
+        return validacion;
+    }
+</script>

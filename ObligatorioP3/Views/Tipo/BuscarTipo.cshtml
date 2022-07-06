@@ -1,0 +1,57 @@
+﻿@using Dominio;
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Tipos</h1>
+
+<p>
+    <a asp-action="Alta">Crear un nuevo tipo</a>
+</p>
+@if (@ViewBag.Tipo == null)
+{
+    <div>
+        @ViewBag.Mensaje
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @ViewBag.Tipo.Nombre
+                </td>
+                <td>
+                    @ViewBag.Tipo.Descripcion
+                </td>
+
+                <td>
+
+                    <a asp-action="Delete" asp-route-nombre="@ViewBag.Tipo.Nombre"> Eliminar </a>
+                    <a asp-action="Edit" asp-route-nombre="@ViewBag.Tipo.Nombre"> Modificar </a>
+
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
